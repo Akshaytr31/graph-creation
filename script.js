@@ -197,4 +197,3 @@ resetBtn.addEventListener("click", () => {
   location.reload()
 })
 
-/////]
