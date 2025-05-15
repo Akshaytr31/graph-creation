@@ -1,50 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Graph Interface</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="main-container">
-    
-    <h1 class="heading">Graph Drawing Interface</h1>
-    <div class="input-section">
-      <div class="input-group">
-        <label >Max X</label>
-        <input type="number" id="maxX"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graph Interface</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div>
+      <div>
+        <button class="add-btn">Add Graph</button>
       </div>
-      <div class="input-group">
-        <label>Max Y</label>
-        <input type="number" id="maxY"/>
-      </div>
+      <h1 class="heading">Graph Drawing Interface</h1>
+      <div class="main-container">
+        <p class="placeholder">Please click Add Graph button!</p>
+        <!-- <div class="sub-container">
+          <h1 class="headingTwo">Graph 1</h1>
+          <div class="input-section">
+            <div class="input-group">
+              <label>Max X</label>
+              <input type="number" id="maxX" />
+            </div>
+            <div class="input-group">
+              <label>Max Y</label>
+              <input type="number" id="maxY" />
+            </div>
 
-    
-      <div class="input-group">
-        <label >X</label>
-        <input type="number" id="x" class="x"/>
-      </div>
-      <div class="input-group">
-        <label>Y</label>
-        <input type="number" id="y" />
-      </div>
-    </div>
+            <div class="input-group">
+              <label>X</label>
+              <input type="number" id="x" class="x" />
+            </div>
+            <div class="input-group">
+              <label>Y</label>
+              <input type="number" id="y" />
+            </div>
+          </div>
 
-    <div class="button-section">
-      <button class="btn draw-btn" id="drawBtn">Draw</button>
-      <button class="btn mark-btn" id="markBtn">Mark</button>
-      <button class="btn clear-btn" id="clearBtn">Clear</button>
-      <button class="btn reset-btn" id="resetBtn">Reset</button>
-    </div>
+          <div class="button-section">
+            <button class="btn draw-btn" id="drawBtn">Draw</button>
+            <button class="btn mark-btn" id="markBtn">Mark</button>
+            <button class="btn clear-btn" id="clearBtn">Clear</button>
+            <button class="btn reset-btn" id="resetBtn">Reset</button>
+          </div>
 
-    <div class="graph-container-main">
-
-      <div id="graph" class="graph-container">
-        
+          <div class="graph-container-main">
+            <div id="graph" class="graph-container"></div>
+          </div> -->
+        </div>
       </div>
     </div>
     <script src="script.js"></script>
-  </div>
-</body>
-
+  </body>
+</html>

@@ -16,12 +16,24 @@ body {
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+.sub-container{
+    border: 1px solid rgb(50, 205, 216);
+    padding: 20px;
+    border-radius: 10px;
 }
 .heading {
     text-align: center;
     font-size: 28px;
     margin-bottom: 30px;
-    color: #333;
+    color: #767874;
+}
+.headingTwo{
+    margin-bottom: 30px;
+    color: #767874;
 }
 .input-section {
     display: grid;
@@ -89,4 +101,23 @@ input{
 }
 .outline{
     outline: 2px solid red;
+}
+.add-btn{
+    background-color: #3985f6;
+    font-size: 18px;
+    color: #fff;
+    padding: 10px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    position: fixed;
+    top: 20px;
+}
+.add-btn:active{
+    scale: 98%;
+}
+.placeholder{
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
