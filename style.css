@@ -9,6 +9,9 @@ body {
     background-color: #f4f6f8;
     padding: 20px;
 }
+body::-webkit-scrollbar{
+    display: none;
+}
 .main-container {
     max-width: 800px;
     margin: auto;
@@ -19,12 +22,36 @@ body {
     display: flex;
     flex-direction: column;
     gap: 60px;
+    background-color: #eaf1fb;
 }
 .sub-container{
-    border: 1px solid rgb(50, 205, 216);
+    border: 1px solid #d9e2f0;;
     padding: 20px;
     border-radius: 10px;
+    background-color: #fafcff;
 }
+.heading-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.delete-grph-btn{
+    padding: 10px;
+    background-color: #3985f6;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.5s ease;
+
+}
+.delete-grph-btn:hover{
+    background-color: red;
+}
+.delete-grph-btn:active{
+    transform: scale(0.95);
+}
+
 .heading {
     text-align: center;
     font-size: 28px;
@@ -72,8 +99,9 @@ input{
     border-radius: 8px;
     color: white;
     cursor: pointer;
-    background-color:rgb(50, 205, 216);
+    background-color:#3985f6;
     transition: transform 0.5s ease;
+    font-weight: 600;
 
 }
 .btn:active{
@@ -88,17 +116,17 @@ input{
 .graph-container {
     height: 400px;
     background-color: #e9ecef;
-    border: 2px #ccc;
+    border: 2px #3985f6;
     display: grid;
     overflow: hidden;
 }
-.grid-box{
+/* .grid-box{
     border:1px solid #ffffff;
     background-color: #3985f6;
-}
-.marked{
+} */
+/* .marked{
     background-color: rgb(255, 234, 0);
-}
+} */
 .outline{
     outline: 2px solid red;
 }

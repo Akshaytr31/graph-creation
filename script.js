@@ -188,36 +188,51 @@
 //   location.reload()
 // })
 
-////]
+////////////////////////////////////////
 
-const addGraphBtn = document.querySelector(".add-btn");
-const mainContainer = document.querySelector(".main-container");
+const selectCollor = {
+  gridBox: {
+    backgroundColor: "rgb(255, 255, 255)",
+    borderColor: "rgb(207, 224, 247)",
+    borderSize: "1px",
+  },
+  marked: {
+    backgroundColor: "#3985f6",
+    borderColor: "#3985f6",
+    borderSize: "1px",
+  },
+};
 
-let graphCount = 0;
+const addGraphBtn = document.querySelector(".add-btn")
+const mainContainer = document.querySelector(".main-container")
+
+let graphCount = 0
 
 addGraphBtn.addEventListener("click", () => {
-  const placeholder=mainContainer.querySelector('.placeholder')
-  if(placeholder){
+  const placeholder = mainContainer.querySelector(".placeholder")
+  if (placeholder) {
     placeholder.remove()
   }
-  graphCount++;
+  graphCount++
 
   const graphContainer = document.createElement("div");
-  graphContainer.innerHTML = `<div class="sub-container">
-      <h1 class="headingTwo">Graph ${graphCount}</h1>
+  graphContainer.innerHTML = `
+    <div class="sub-container">
+      <div class="heading-container">
+        <h1 class="headingTwo">Graph ${graphCount}</h1>
+        <button class="delete-grph-btn">Remove</button>
+      </div>
       <div class="input-section">
         <div class="input-group">
-          <label >Max X</label>
+          <label>Max X</label>
           <input type="number" id="maxX"/>
         </div>
         <div class="input-group">
           <label>Max Y</label>
           <input type="number" id="maxY"/>
         </div>
-  
-      
         <div class="input-group">
-          <label >X</label>
+          <label>X</label>
           <input type="number" id="x" class="x"/>
         </div>
         <div class="input-group">
@@ -225,105 +240,115 @@ addGraphBtn.addEventListener("click", () => {
           <input type="number" id="y" />
         </div>
       </div>
-  
       <div class="button-section">
         <button class="btn draw-btn" id="drawBtn">Draw</button>
         <button class="btn mark-btn" id="markBtn">Mark</button>
         <button class="btn clear-btn" id="clearBtn">Clear</button>
         <button class="btn reset-btn" id="resetBtn">Reset</button>
       </div>
-  
       <div class="graph-container-main">
-  
-        <div id="graph" class="graph-container">
-          
-        </div>
+        <div id="graph" class="graph-container"></div>
       </div>
-      </div>
-  `;
-  mainContainer.appendChild(graphContainer);
-  setupGraphHandlers(graphContainer);
-});
+    </div>
+  `
+  mainContainer.appendChild(graphContainer)
+  setupGraphHandlers(graphContainer)
+})
 
 function setupGraphHandlers(elm) {
-  const drawBtn = elm.querySelector("#drawBtn");
-  const graph = elm.querySelector("#graph");
-  const markBtn = elm.querySelector("#markBtn");
-  const clearBtn = elm.querySelector("#clearBtn");
-  const resetBtn = elm.querySelector("#resetBtn");
+  const drawBtn = elm.querySelector("#drawBtn")
+  const graph = elm.querySelector("#graph")
+  const markBtn = elm.querySelector("#markBtn")
+  const clearBtn = elm.querySelector("#clearBtn")
+  const resetBtn = elm.querySelector("#resetBtn")
+  const deleteGraph = elm.querySelector(".delete-grph-btn")
 
-  markBtn.disabled = true;
-  markBtn.style.backgroundColor = "#cad5d7";
-  clearBtn.disabled = true;
-  clearBtn.style.backgroundColor = "#cad5d7";
-  resetBtn.disabled = true;
-  resetBtn.style.backgroundColor = "#cad5d7";
+  markBtn.disabled = true
+  markBtn.style.backgroundColor = "#c1d1e9"
+  clearBtn.disabled = true
+  clearBtn.style.backgroundColor = "#c1d1e9"
+  resetBtn.disabled = true
+  resetBtn.style.backgroundColor = "#c1d1e9"
+
+  let columnBoxes = []
 
   drawBtn.addEventListener("click", () => {
-    console.log("cclick");
-    const maxX = parseInt(elm.querySelector("#maxX").value);
-    const maxY = parseInt(elm.querySelector("#maxY").value);
+    const maxX = parseInt(elm.querySelector("#maxX").value)
+    const maxY = parseInt(elm.querySelector("#maxY").value)
 
-    graph.style.display = "grid";
-    graph.style.gridTemplateColumns = `repeat(${maxX}, 1fr)`;
-    graph.style.gridTemplateRows = `repeat(${maxY}, 1fr)`;
+    graph.style.display = "grid"
+    graph.style.gridTemplateColumns = `repeat(${maxX}, 1fr)`
+    graph.style.gridTemplateRows = `repeat(${maxY}, 1fr)`
+
+    graph.innerHTML = ""
 
     for (let y = maxY - 1; y >= 0; y--) {
       for (let x = 0; x < maxX; x++) {
-        const box = document.createElement("div");
-        box.classList.add("grid-box");
-        box.setAttribute("data-x", x);
-        box.setAttribute("data-y", y);
-        graph.appendChild(box);
+        const box = document.createElement("div")
+        box.classList.add("grid-box")
+        box.setAttribute("data-x", x)
+        box.setAttribute("data-y", y)
+        box.style.backgroundColor = selectCollor.gridBox.backgroundColor;
+        box.style.border = `${selectCollor.gridBox.borderSize} solid ${selectCollor.gridBox.borderColor}`
+        graph.appendChild(box)
       }
     }
 
-    markBtn.disabled = false;
-    markBtn.style.backgroundColor = "rgb(50, 205, 216)";
-  });
+    markBtn.disabled = false
+    markBtn.style.backgroundColor = "#3985f6"
+  })
 
   markBtn.addEventListener("click", () => {
-    const x = parseInt(elm.querySelector("#x").value);
-    const y = parseInt(elm.querySelector("#y").value);
-    const maxX = parseInt(elm.querySelector("#maxX").value);
-    const maxY = parseInt(elm.querySelector("#maxY").value);
-  
-    const xInput = elm.querySelector("#x");
-    const yInput = elm.querySelector("#y");
-  
-    xInput.classList.remove("outline");
-    yInput.classList.remove("outline");
-  
+    const x = parseInt(elm.querySelector("#x").value)
+    const y = parseInt(elm.querySelector("#y").value)
+    const maxX = parseInt(elm.querySelector("#maxX").value)
+    const maxY = parseInt(elm.querySelector("#maxY").value)
+
+    const xInput = elm.querySelector("#x")
+    const yInput = elm.querySelector("#y")
+
+    xInput.classList.remove("outline")
+    yInput.classList.remove("outline")
+
     if (x >= 0 && x < maxX && y >= 0 && y < maxY) {
-      const columnBoxes = [];
-  
+      columnBoxes = [];
+
       for (let i = 0; i <= y; i++) {
-        const box = elm.querySelector(`.grid-box[data-x="${x}"][data-y="${i}"]`);
+        const box = elm.querySelector(`.grid-box[data-x="${x}"][data-y="${i}"]`)
         if (box) {
-          columnBoxes.push(box);
+          columnBoxes.push(box)
         }
       }
-  
+
       columnBoxes.forEach((box) => {
-        box.classList.add("marked");
-      });
-  
-      clearBtn.addEventListener("click", () => {
-        columnBoxes.forEach((box) => box.classList.remove("marked"));
-      });
-  
-      clearBtn.disabled = false;
-      clearBtn.style.backgroundColor = "rgb(50, 205, 216)";
-      resetBtn.disabled = false;
-      resetBtn.style.backgroundColor = "rgb(50, 205, 216)";
+        box.style.backgroundColor = selectCollor.marked.backgroundColor
+      })
+
+      clearBtn.disabled = false
+      clearBtn.style.backgroundColor = "#3985f6"
+      resetBtn.disabled = false
+      resetBtn.style.backgroundColor = "#3985f6"
     } else {
-      if (x >= maxX || x < 0) xInput.classList.add("outline");
-      if (y >= maxY || y < 0) yInput.classList.add("outline");
+      if (x >= maxX || x < 0) xInput.classList.add("outline")
+      if (y >= maxY || y < 0) yInput.classList.add("outline")
     }
-  });
-  
+  })
+
+  clearBtn.addEventListener("click", () => {
+    columnBoxes.forEach((box) => {
+      box.style.backgroundColor = selectCollor.gridBox.backgroundColor
+      box.style.border = `${selectCollor.gridBox.borderSize} solid ${selectCollor.gridBox.borderColor}`
+    })
+  })
 
   resetBtn.addEventListener("click", () => {
     location.reload();
-  });
+  })
+
+  deleteGraph.addEventListener("click", () => {
+    elm.remove()
+  })
 }
+
+
+//
