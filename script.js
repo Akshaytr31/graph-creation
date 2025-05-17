@@ -346,15 +346,33 @@ function setupGraphHandlers(elm) {
     })
   })
 
-  resetBtn.addEventListener("click", () => {
-    location.reload();
+  resetBtn.addEventListener('click',()=>{
+    const maxX=elm.querySelector('#maxX')
+    const maxY=elm.querySelector('#maxY')
+    const xInput=elm.querySelector('#x')
+    const yInput=elm.querySelector('#y')
+    const graph=elm.querySelector('#graph')
+
+    graph.innerHTML=""
+    maxX.value=""
+    maxY.value=""
+    yInput.value=""
+    xInput.value=""
+
+
+    clearBtn.disabled = true
+    clearBtn.style.backgroundColor = "#c1d1e9"
+    resetBtn.disabled = true
+    resetBtn.style.backgroundColor = "#c1d1e9"
+
+    markBtn.disabled = true
+    markBtn.style.backgroundColor = "#c1d1e9"
+
+
   })
 
   deleteGraph.addEventListener("click", () => {
     elm.remove()
   })
 }
-
-
-
 
