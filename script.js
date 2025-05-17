@@ -188,7 +188,7 @@
 //   location.reload()
 // })
 
-////////////////////////////////////////
+///////////////////////////////////////
 
 const selectCollor = {
   gridBox: {
@@ -277,6 +277,10 @@ function setupGraphHandlers(elm) {
   drawBtn.addEventListener("click", () => {
     const maxX = parseInt(elm.querySelector("#maxX").value)
     const maxY = parseInt(elm.querySelector("#maxY").value)
+    const graphContainerMain=elm.querySelector('.graph-container-main')
+
+
+    graphContainerMain.classList.add('graph-container-main-click')
 
     graph.style.display = "grid"
     graph.style.gridTemplateColumns = `repeat(${maxX}, 1fr)`
@@ -367,8 +371,6 @@ function setupGraphHandlers(elm) {
 
     markBtn.disabled = true
     markBtn.style.backgroundColor = "#c1d1e9"
-
-
   })
 
   deleteGraph.addEventListener("click", () => {
@@ -376,4 +378,5 @@ function setupGraphHandlers(elm) {
   })
 }
 
-/////
+
+

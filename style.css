@@ -111,6 +111,11 @@ input{
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 14px;
+    padding-bottom: 3px;
+
+}
+.graph-container-main-click{
+    background-color: #616d70;
 
 }
 .graph-container {
