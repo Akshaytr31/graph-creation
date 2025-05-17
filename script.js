@@ -193,8 +193,10 @@
 const selectCollor = {
   gridBox: {
     backgroundColor: "rgb(255, 255, 255)",
-    borderColor: "rgb(207, 224, 247)",
+    borderColor: "rgb(255, 255, 255)",
     borderSize: "1px",
+    borderRight:'20px',
+    borderBottom:'0'
   },
   marked: {
     backgroundColor: "#3985f6",
@@ -288,8 +290,11 @@ function setupGraphHandlers(elm) {
         box.classList.add("grid-box")
         box.setAttribute("data-x", x)
         box.setAttribute("data-y", y)
+        box.style.paddingInline='5px'
         box.style.backgroundColor = selectCollor.gridBox.backgroundColor;
-        box.style.border = `${selectCollor.gridBox.borderSize} solid ${selectCollor.gridBox.borderColor}`
+        // box.style.border = `${selectCollor.gridBox.borderSize} solid ${selectCollor.gridBox.borderColor}`
+        box.style.borderRight=`${selectCollor.gridBox.borderRight} solid ${selectCollor.gridBox.borderColor}`
+        // box.style.borderBottom=`${selectCollor.gridBox.borderBottom}`
         graph.appendChild(box)
       }
     }
@@ -349,4 +354,6 @@ function setupGraphHandlers(elm) {
     elm.remove()
   })
 }
+
+///
 
