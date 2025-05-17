@@ -192,14 +192,14 @@
 
 const selectCollor = {
   gridBox: {
-    backgroundColor: "rgb(255, 255, 255)",
-    borderColor: "rgb(255, 255, 255)",
+    backgroundColor: "#616d70",
+    borderColor: "#616d70",
     borderSize: "1px",
     borderRight:'20px',
     borderBottom:'0'
   },
   marked: {
-    backgroundColor: "#3985f6",
+    backgroundColor: "#10d0f2",
     borderColor: "#3985f6",
     borderSize: "1px",
   },
@@ -376,3 +376,4 @@ function setupGraphHandlers(elm) {
   })
 }
 
+/////
